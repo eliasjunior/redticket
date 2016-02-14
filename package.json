@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A simple starter Angular2 project",
   "scripts": {
-    "start": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8080 --content-base src"
+    "start": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8080 --content-base src",
     "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js"
   },
   "repository": {
