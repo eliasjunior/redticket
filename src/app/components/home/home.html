@@ -1,16 +1,15 @@
+<header [name]="'Dados'"></header>
 <div class="container">
   <form (ngSubmit)="addLeaf()" #leafForm="ngForm" novalidate>
     <div class="form-group">
       <label for="enterName">Informe o nome:</label>
       <input id="enterName" type="text" required
              [(ngModel)]="formLeaf.name" ngControl="name" #name="ngForm">
-      <!--<div [hidden]="name.valid || name.pristine" class="alert alert-danger" >-->
-        <!--Name required-->
-      <!--</div>-->
+
     </div>
     <div class="form-group">
       <label>Informe o sexo:</label>
-      <select class="form-control" [(ngModel)]="formLeaf.gender" required>
+      <select  [(ngModel)]="formLeaf.gender" required>
         <option value=""></option>
         <option *ngFor="#sex of optionGender" [value]="sex.value">{{sex.label}}</option>
       </select>
@@ -27,19 +26,21 @@
       <button class="btn btn-danger" (click)="removeTree()">
         <i class="fa fa-trash" ></i>
       </button>
-      <span  [hidden]="relatives.length < 3" >
-        <button class="btn btn-primary" (click)="generateReport()">
-        Finish
-        </button>
-      </span>
+      <!--[hidden]="false || relatives.length < 3" -->
+
     </div>
 
   </form>
-  <div *ngFor="#leaf of relatives">
+  <span >
+    <button class="btn btn-primary" (click)="generateReport()">
+      Finish
+    </button>
+  </span>
+
+  <div *ngFor="#leaf of treeService.relatives">
     {{leaf.name}}
     <i class="fa" [ngClass]="{'fa-mars' : leaf.gender === 'M', 'fa-venus' : leaf.gender === 'F'}"></i>
     {{leaf.dateBirth}}
   </div>
-  <div class="alert alert-danger" *ngIf="law1948">Lei de 1948 você nao tem direito click aqui para checar alternatives <a href="">Verificar</a></div>
 </div>
 

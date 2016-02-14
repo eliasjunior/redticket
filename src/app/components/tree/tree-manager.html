@@ -1,0 +1,26 @@
+<header [name]="'Arvore'"></header>
+<div class="container">
+  <div [hidden]="isEligible || !completed" class="alert alert-danger" >
+    Voce nao tem direito da cidadania por via administrativa, confira  <a href="">alternativas</a>
+  </div>
+  <div [hidden]="!isEligible || !completed" class="alert alert-success" >
+    Parabens, Voce tem direito a cidadania
+  </div>
+
+  <div *ngFor="#leaf of treeService.relatives; #i = index">
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        {{leaf.name}}
+        <i class="fa" [ngClass]="{'fa-mars' : leaf.gender === 'M', 'fa-venus' : leaf.gender === 'F'}"></i>
+
+        <span style="float: right"> <img src="app/images/italy24.png" /></span>
+
+      </li>
+    </ul>
+    <div style="margin-left: 50%;" [hidden]="i === treeService.relatives.length - 1"><i class="fa fa-long-arrow-down"></i></div>
+
+  </div>
+  <div class="alert alert-danger" *ngIf="law1948">Lei de 1948 você nao tem direito click aqui para checar alternatives <a href="">Verificar</a></div>
+</div>
+

@@ -1,7 +1,7 @@
 /**
  * Created by .
  */
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {Alert} from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
@@ -12,6 +12,5 @@ import {Alert} from 'ng2-bootstrap/ng2-bootstrap';
   pipes: []
 })
 export class Header {
-  constructor() {
-  }
+  @Input() name : string
 }
